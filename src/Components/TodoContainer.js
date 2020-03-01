@@ -12,6 +12,8 @@ const TodoContainerBox = styled.div`
     
     display: flex;
     flex-direction: column;
+    
+    position: relative;
 `;
 
 function TodoContainer({children}) {
