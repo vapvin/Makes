@@ -35,7 +35,7 @@ export function ListProvider({children}){
     );
 }
 
-export function useTodoState(){
+export function useListState(){
     const context = useContext(ListStateContext);
     if(!context){
         throw new Error('Error!');
@@ -43,7 +43,7 @@ export function useTodoState(){
     return context;
 }
 
-export function useTodoDispatch(){
+export function useListDispatch(){
     const context = useContext(ListDispatchContext);
     if(!context){
         throw new Error('Error!');
@@ -51,7 +51,7 @@ export function useTodoDispatch(){
     return context;
 }
 
-export function useTodoNextId(){
+export function useListNextId(){
     const context = useContext(ListNextIdContext);
     if(!context){
         throw new Error('Error!');

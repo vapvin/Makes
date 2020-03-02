@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Item from "./Item";
+import {useListState} from "../Context/Context";
 
 const ListContainer = styled.ul`
     flex: 1;
@@ -9,13 +10,17 @@ const ListContainer = styled.ul`
 `;
 
 function List() {
+    const todos = useListState();
     return (
         <ListContainer>
-            <Item text="오늘" done={false}/>
-            <Item text="리엑트" done={false}/>
-            <Item text="투두" done={false}/>
-            <Item text="만듬" done={true}/>
-            <Item text="ㅋㅋ" done={true}/>
+            {todos.map(
+                todo=><Item
+                    key={todo.id}
+                    id={todo.id}
+                    text={todo.text}
+                    done={todo.done}
+                />
+            )}
         </ListContainer>
     )
 }

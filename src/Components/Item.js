@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import { MdDone, MdDelete } from "react-icons/md";
+import {useListDispatch} from "../Context/Context";
 
 
 const Remove = styled.div`
@@ -60,11 +61,20 @@ const ItemBox = styled.div`
 `;
 
 function Item({id, done, text}){
+    const dispatch = useListDispatch();
+    const onToggle = () => dispatch({
+        type: 'TOGGLE',
+        id
+    });
+    const onRemove = () => dispatch({
+        type: 'REMOVE',
+        id
+    });
     return (
         <ItemBox>
-            <CheckCircle />
+            <CheckCircle done={done} onClick={onToggle}/>
             <Text done={done}>{text}</Text>
-            <Remove>
+            <Remove onClick={onRemove}>
                 {done && <MdDone className="done" />}
                 <MdDelete className="removes" />
             </Remove>
